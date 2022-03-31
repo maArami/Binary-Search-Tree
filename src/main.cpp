@@ -6,9 +6,11 @@ int main(int argc, char** argv)
 {
     if (false) // make false to run unit-tests
     {
-        BST::Node left { 10, nullptr, nullptr };
-        BST::Node right { 10, nullptr, nullptr };
-        BST::Node node { 10, &left, &right };
+        BST bst {};
+        bst.add_node(10);
+        bst.add_node(20);
+        bst.add_node(15);
+
     } else {
         ::testing::InitGoogleTest(&argc, argv);
         std::cout << "RUNNING TESTS ..." << std::endl;

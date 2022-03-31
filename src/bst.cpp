@@ -1,5 +1,7 @@
 #include "bst.h"
 
+//----------------------------------------------------------------
+// Node classes
 BST::Node::Node(int _value, Node* _left, Node* _right)
     : value { _value }
     , left { _left }
@@ -32,4 +34,50 @@ std::ostream& operator<<(std::ostream& os, const BST::Node& node)
     os << "adress of left: " << node.left << std::endl;
     os << "adress of right: " << node.right << std::endl;
     return os;
+}
+//--------------------------------------------------------------------------
+// bst classes
+
+BST::Node*& BST::get_root()
+{
+    return root;
+}
+
+bool BST::add_node(int value)
+{
+    if (get_root() == nullptr) {
+        root = new Node;
+        root->value = value;
+        root->right = nullptr;
+        root->left = nullptr;
+        return 1;
+    }
+    BST::Node* pntr { root };
+    while (1) {
+        if (value > pntr->value) {
+            if (pntr->right == nullptr) {
+                pntr->right = new Node;
+                pntr = pntr->right;
+
+                pntr->value = value;
+                std::cout << *(pntr) << std::endl;
+                return 1;
+            } else {
+                pntr = pntr->right;
+            }
+        } else {
+            if (value == pntr->value)
+                return 0;
+            if (pntr->left == nullptr) {
+                pntr->left = new Node;
+                pntr = pntr->left;
+
+                pntr->value = value;
+                std::cout << *(pntr) << std::endl;
+                return 1;
+            } else {
+                pntr = pntr->left;
+            }
+        }
+    }
 }

@@ -77,14 +77,15 @@ TEST(HW3Test, TEST5)
     EXPECT_FALSE(3 == node);
 }
 
-/*
-TEST(HW3Test, TEST6) {
-    BST bst{};
+TEST(HW3Test, TEST6)
+{
+    BST bst {};
     EXPECT_EQ(bst.get_root(), nullptr);
 }
 
-TEST(HW3Test, TEST7) {
-    BST bst{};
+TEST(HW3Test, TEST7)
+{
+    BST bst {};
     bst.add_node(10);
     bst.add_node(20);
     bst.add_node(5);
@@ -93,8 +94,9 @@ TEST(HW3Test, TEST7) {
     EXPECT_EQ(bst.get_root()->right->value, 20);
 }
 
-TEST(HW3Test, TEST8) {
-    BST bst{};
+TEST(HW3Test, TEST8)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -107,7 +109,7 @@ TEST(HW3Test, TEST8) {
     EXPECT_EQ(bst.get_root()->left->right->value, 15);
     EXPECT_EQ(bst.get_root()->right->right->value, 53);
 }
-
+/*
 TEST(HW3Test, TEST9) {
     BST bst{};
     bst.add_node(25);
