@@ -24,3 +24,12 @@ BST::Node::Node(const Node& node)
     right = node.right;
     left = node.left;
 }
+
+std::ostream& operator<<(std::ostream& os, const BST::Node& node)
+{
+    os << "adress of node: " << &node << std::endl;
+    os << "value of node: " << node.value << std::endl;
+    os << "adress of left: " << node.left << std::endl;
+    os << "adress of right: " << node.right << std::endl;
+    return os;
+}
