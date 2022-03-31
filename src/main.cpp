@@ -4,10 +4,11 @@
 
 int main(int argc, char** argv)
 {
-    if (true) // make false to run unit-tests
+    if (false) // make false to run unit-tests
     {
-        std::cout << "Hello" << std::endl;
-
+        BST::Node left { 10, nullptr, nullptr };
+        BST::Node right { 10, nullptr, nullptr };
+        BST::Node node { 10, &left, &right };
     } else {
         ::testing::InitGoogleTest(&argc, argv);
         std::cout << "RUNNING TESTS ..." << std::endl;
