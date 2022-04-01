@@ -2,6 +2,7 @@
 
 //----------------------------------------------------------------
 // Node classes
+
 BST::Node::Node(int _value, Node* _left, Node* _right)
     : value { _value }
     , left { _left }
@@ -45,11 +46,13 @@ BST::Node*& BST::get_root()
 
 bool BST::add_node(int value)
 {
+
     if (get_root() == nullptr) {
         root = new Node;
         root->value = value;
         root->right = nullptr;
         root->left = nullptr;
+
         return 1;
     }
     BST::Node* pntr { root };
@@ -81,3 +84,17 @@ bool BST::add_node(int value)
         }
     }
 }
+
+size_t BST::length()
+{
+    int cnt {};
+    if (root == nullptr)
+        return 0;
+    BST bst {};
+    bst.root = root->left;
+    cnt += bst.length();
+    bst.root = root->right;
+    cnt += bst.length();
+    return cnt + 1;
+}
+
