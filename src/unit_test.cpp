@@ -206,9 +206,10 @@ TEST(HW3Test, TEST14)
     EXPECT_EQ((*node)->left->value, 7);
     EXPECT_EQ((*node)->right->value, 15);
 }
-/*
-TEST(HW3Test, TEST15) {
-    BST bst{};
+
+TEST(HW3Test, TEST15)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -218,14 +219,15 @@ TEST(HW3Test, TEST15) {
     bst.add_node(8);
     bst.add_node(9);
 
-    BST::Node** node{bst.find_successor(10)};
+    BST::Node** node { bst.find_successor(10) };
     EXPECT_EQ((*node)->value, 9);
     EXPECT_EQ((*node)->left, nullptr);
     EXPECT_EQ((*node)->right, nullptr);
 }
 
-TEST(HW3Test, TEST16) {
-    BST bst{};
+TEST(HW3Test, TEST16)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -238,8 +240,9 @@ TEST(HW3Test, TEST16) {
     EXPECT_FALSE(bst.delete_node(11));
 }
 
-TEST(HW3Test, TEST17) {
-    BST bst{};
+TEST(HW3Test, TEST17)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -255,8 +258,9 @@ TEST(HW3Test, TEST17) {
     EXPECT_EQ(bst.get_root()->right->right, nullptr);
 }
 
-TEST(HW3Test, TEST18) {
-    BST bst{};
+TEST(HW3Test, TEST18)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -278,8 +282,9 @@ TEST(HW3Test, TEST18) {
     EXPECT_EQ(bst.get_root()->left->right->right, nullptr);
 }
 
-TEST(HW3Test, TEST19) {
-    BST bst{};
+TEST(HW3Test, TEST19)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -291,8 +296,8 @@ TEST(HW3Test, TEST19) {
     bst.add_node(7);
     bst.add_node(75);
 
-    BST::Node* address_of_5{*bst.find_node(5)};
-    BST::Node* address_of_2{*bst.find_node(2)};
+    BST::Node* address_of_5 { *bst.find_node(5) };
+    BST::Node* address_of_2 { *bst.find_node(2) };
 
     EXPECT_TRUE(bst.delete_node(10)); // only left child
 
@@ -301,11 +306,11 @@ TEST(HW3Test, TEST19) {
     // when deleting a node: just reconnect the needed parrents and childs
     EXPECT_EQ(*bst.find_node(5), address_of_5);
     EXPECT_EQ(*bst.find_node(2), address_of_2);
-
 }
 
-TEST(HW3Test, TEST20) {
-    BST bst{};
+TEST(HW3Test, TEST20)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -328,8 +333,9 @@ TEST(HW3Test, TEST20) {
     EXPECT_EQ(bst.get_root()->right->left->right, nullptr);
 }
 
-TEST(HW3Test, TEST21) {
-    BST bst{};
+TEST(HW3Test, TEST21)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -341,8 +347,8 @@ TEST(HW3Test, TEST21) {
     bst.add_node(7);
     bst.add_node(75);
 
-    BST::Node* address_of_60{*bst.find_node(60)};
-    BST::Node* address_of_75{*bst.find_node(75)};
+    BST::Node* address_of_60 { *bst.find_node(60) };
+    BST::Node* address_of_75 { *bst.find_node(75) };
 
     EXPECT_TRUE(bst.delete_node(50)); // only left child
 
@@ -353,31 +359,33 @@ TEST(HW3Test, TEST21) {
     EXPECT_EQ(*bst.find_node(75), address_of_75);
 }
 
-TEST(HW3Test, TEST22) {
-    BST bst{};
-    bst.add_node(25);
-    bst.add_node(10);
-    bst.add_node(50);
-    bst.add_node(65);
-    bst.add_node(60);
-    bst.add_node(70);
-    bst.add_node(5);
-    bst.add_node(2);
-    bst.add_node(7);
-    bst.add_node(75);
-    bst.add_node(20);
-    bst.add_node(15);
+// TEST(HW3Test, TEST22)
+// {
+//     BST bst {};
+//     bst.add_node(25);
+//     bst.add_node(10);
+//     bst.add_node(50);
+//     bst.add_node(65);
+//     bst.add_node(60);
+//     bst.add_node(70);
+//     bst.add_node(5);
+//     bst.add_node(2);
+//     bst.add_node(7);
+//     bst.add_node(75);
+//     bst.add_node(20);
+//     bst.add_node(15);
 
-    EXPECT_EQ(bst.length(), 12);
-    EXPECT_TRUE(bst.delete_node(10)); // both children exist
-    EXPECT_EQ(bst.length(), 11);
-    EXPECT_EQ(bst.get_root()->left->value, 7);
-    EXPECT_EQ(bst.get_root()->left->left->right, nullptr);
-    EXPECT_EQ(bst.get_root()->left->left->value, 5);
-}
-
-TEST(HW3Test, TEST23) {
-    BST bst{};
+//     EXPECT_EQ(bst.length(), 12);
+//     EXPECT_TRUE(bst.delete_node(10)); // both children exist
+//     EXPECT_EQ(bst.length(), 11);
+//     EXPECT_EQ(bst.get_root()->left->value, 7);
+//     EXPECT_EQ(bst.get_root()->left->left->right, nullptr);
+//     EXPECT_EQ(bst.get_root()->left->left->value, 5);
+// }
+/*
+TEST(HW3Test, TEST23)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
