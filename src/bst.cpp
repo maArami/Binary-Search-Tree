@@ -98,3 +98,54 @@ size_t BST::length()
     return cnt + 1;
 }
 
+BST::Node** BST::find_node(int value)
+{
+    if (root == nullptr)
+        return nullptr;
+
+    while (1) {
+
+        if (value == root->value) {
+            return &root;
+        }
+        if (value > root->value) {
+            if (root->right == nullptr)
+                return nullptr;
+            root = root->right;
+
+        } else if (value < root->value) {
+            if (root->left == nullptr) {
+                return nullptr;
+            }
+            root = root->left;
+        }
+    }
+}
+
+BST::Node** BST::find_parrent(int value)
+{
+    if (root == nullptr)
+        return nullptr;
+    while (1) {
+
+        if (value == root->left->value || value == root->right->value) {
+            return &root;
+        }
+        if (value > root->value) {
+            if (root->right == nullptr)
+                return nullptr;
+            root = root->right;
+
+        } else if (value < root->value) {
+            if (root->left == nullptr) {
+                return nullptr;
+            }
+            root = root->left;
+        }
+    }
+}
+
+BST::Node** BST::find_successor(int value)
+{
+    
+}

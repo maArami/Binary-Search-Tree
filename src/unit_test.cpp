@@ -2,6 +2,8 @@
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 #include <algorithm>
+#include <stdio.h>
+#include <typeinfo>
 
 TEST(HW3Test, TEST1)
 {
@@ -142,8 +144,9 @@ TEST(HW3Test, TEST10)
     EXPECT_EQ(bst.length(), 6);
 }
 /*
-TEST(HW3Test, TEST11) {
-    BST bst{};
+TEST(HW3Test, TEST11)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -154,9 +157,11 @@ TEST(HW3Test, TEST11) {
     std::cout << "PRINT A BINARY SEARCH TREE" << std::endl;
     std::cout << bst << std::endl;
 }
+*/
 
-TEST(HW3Test, TEST12) {
-    BST bst{};
+TEST(HW3Test, TEST12)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -164,14 +169,15 @@ TEST(HW3Test, TEST12) {
     bst.add_node(15);
     bst.add_node(7);
 
-    BST::Node** node{bst.find_node(10)};
+    BST::Node** node { bst.find_node(10) };
     EXPECT_EQ((*node)->value, 10);
     EXPECT_EQ((*node)->left->value, 7);
     EXPECT_EQ((*node)->right->value, 15);
 }
 
-TEST(HW3Test, TEST13) {
-    BST bst{};
+TEST(HW3Test, TEST13)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -179,12 +185,13 @@ TEST(HW3Test, TEST13) {
     bst.add_node(15);
     bst.add_node(7);
 
-    BST::Node** node{bst.find_node(11)};
+    BST::Node** node { bst.find_node(11) };
     EXPECT_EQ(node, nullptr);
 }
 
-TEST(HW3Test, TEST14) {
-    BST bst{};
+TEST(HW3Test, TEST14)
+{
+    BST bst {};
     bst.add_node(25);
     bst.add_node(10);
     bst.add_node(50);
@@ -193,13 +200,13 @@ TEST(HW3Test, TEST14) {
     bst.add_node(7);
 
     std::cout << "here" << std::endl;
-    BST::Node** node{bst.find_parrent(15)};
+    BST::Node** node { bst.find_parrent(15) };
     std::cout << "here2" << std::endl;
     EXPECT_EQ((*node)->value, 10);
     EXPECT_EQ((*node)->left->value, 7);
     EXPECT_EQ((*node)->right->value, 15);
 }
-
+/*
 TEST(HW3Test, TEST15) {
     BST bst{};
     bst.add_node(25);
