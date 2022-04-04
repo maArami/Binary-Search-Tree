@@ -151,6 +151,7 @@ BST::Node** BST::find_parrent(int value)
             if ((*pntr)->left == nullptr) {
                 return nullptr;
             }
+
             vec.push(&(*pntr)->left);
             vec.pop();
             pntr = vec.back();
@@ -162,22 +163,28 @@ BST::Node** BST::find_successor(int value)
 {
     if (root == nullptr)
         return nullptr;
+
     std::queue<Node**> vec;
     vec.push(find_node(value));
     Node** pntr = vec.back();
+
     if ((*pntr)->left == nullptr)
         return pntr;
+
     vec.push(&(*pntr)->left);
     vec.pop();
     pntr = vec.back();
+
     while (1) {
         if ((*pntr)->right == nullptr)
             return pntr;
+
         vec.push(&(*pntr)->right);
         vec.pop();
         pntr = vec.back();
     }
 }
+
 bool BST::delete_node(int value)
 {
     if (root == nullptr)
