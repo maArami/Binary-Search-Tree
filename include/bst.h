@@ -20,10 +20,9 @@ public:
         Node* left;
         Node* right;
     };
-
     Node*& get_root();
     // void bfs(std::function<void(Node*& node)> func);
-    size_t length();
+    size_t length() const;
     bool add_node(int value);
     Node** find_node(int value);
     Node** find_parrent(int value);
@@ -35,5 +34,5 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& os, const BST::Node& node);
-
+std::ostream& operator<<(std::ostream& os, BST& bst);
 #endif // BST_H

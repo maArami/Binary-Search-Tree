@@ -2,7 +2,6 @@
 
 //----------------------------------------------------------------
 // Node classes
-BST::Node* M {};
 BST::Node::Node(int _value, Node* _left, Node* _right)
     : value { _value }
     , left { _left }
@@ -28,10 +27,11 @@ BST::Node::Node(const Node& node)
 
 std::ostream& operator<<(std::ostream& os, const BST::Node& node)
 {
-    os << "adress of node: " << &node << std::endl;
-    os << "value of node: " << node.value << std::endl;
-    os << "adress of left: " << node.left << std::endl;
-    os << "adress of right: " << node.right << std::endl;
+    os << &node << std::string(7, ' ');
+    os << "=>"
+       << "value=" << node.value << std::string(7, ' ');
+    os << "left=" << node.left << std::string(7, ' ');
+    os << "right=" << node.right << std::string(7, ' ') << std::endl;
     return os;
 }
 //--------------------------------------------------------------------------
@@ -47,7 +47,6 @@ bool BST::add_node(int value)
 
     if (get_root() == nullptr) {
         root = new Node;
-        M = root;
         root->value = value;
         root->right = nullptr;
         root->left = nullptr;
@@ -84,7 +83,7 @@ bool BST::add_node(int value)
     }
 }
 
-size_t BST::length()
+size_t BST::length() const
 {
     int cnt {};
     if (root == nullptr)
@@ -181,28 +180,57 @@ BST::Node** BST::find_successor(int value)
 }
 bool BST::delete_node(int value)
 {
-
     if (root == nullptr)
         return 0;
     if (find_node(value) == nullptr)
         return 0;
-    Node** pntr = find_node(value);
+
+    Node** pntr { find_node(value) };
 
     if ((*pntr)->left == nullptr && (*pntr)->right == nullptr) {
         delete (*pntr);
         (*pntr) = nullptr;
         return 1;
+
     } else if ((*pntr)->left == nullptr) {
         (*pntr) = (*pntr)->right;
         return 1;
+
     } else if ((*pntr)->right == nullptr) {
         (*pntr) = (*pntr)->left;
         return 1;
+
     } else {
-        Node** pntr2 = find_successor(value);
-        (*pntr) = (*pntr2);
+
+        Node** pntr2 { find_successor(value) };
+        (*pntr)->value = (*pntr2)->value;
         delete (*pntr2);
         (*pntr2) = nullptr;
         return 1;
     }
+}
+
+std::ostream& operator<<(std::ostream& os, BST& bst)
+{
+    os << std::string(80, '*') << std::endl;
+    std::queue<BST::Node**> vec;
+    vec.push(&(bst.get_root()));
+    BST::Node** pntr = vec.back();
+    os << *(*pntr);
+    for (size_t i {}; i < bst.length(); i++) {
+        if ((*pntr)->right != nullptr) {
+            vec.push(&(*pntr)->right);
+            vec.pop();
+            pntr = vec.back();
+            os << *(*pntr);
+        }
+        if ((*pntr)->left != nullptr) {
+            vec.push(&(*pntr)->left);
+            vec.pop();
+            pntr = vec.back();
+            os << *(*pntr);
+        }
+    }
+    os << std::string(80, '*') << std::endl;
+    return os;
 }
